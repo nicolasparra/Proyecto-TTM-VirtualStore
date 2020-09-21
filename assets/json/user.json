@@ -1,0 +1,9 @@
+{
+    "nombre": "Usuario para Login",
+    "usuario":[
+        {
+            "email": "nico@nico.cl",
+            "password": "12345"
+        }     
+    ]
+}

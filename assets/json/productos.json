@@ -1,0 +1,33 @@
+{
+    "nombre": "Lista de productos",
+    "productos":[
+        {
+            "nombre": "cartera",
+            "precio": "1000"
+        },
+        {
+            "nombre": "Tele",
+            "precio": "2000"
+        },
+        {
+            "nombre": "Estufa",
+            "precio": "3000"
+        },
+        {
+            "nombre": "Mueble",
+            "precio": "4000"
+        },
+        {
+            "nombre": "Refirgerador",
+            "precio": "3500"
+        },
+        {
+            "nombre": "zapatos",
+            "precio": "500"
+        },
+        {
+            "nombre": "Chaqueta",
+            "precio": "1000"
+        }
+    ]
+}
