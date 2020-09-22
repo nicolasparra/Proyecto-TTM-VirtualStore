@@ -30,9 +30,21 @@ class ItemCard extends StatelessWidget {
                 color: product.color,
                 borderRadius: BorderRadius.circular(16),
               ),
+              // child: Hero(
+              //   tag: "${product.id}",
+              //   child: Image.asset(product.image),
+              // ),
               child: Hero(
                 tag: "${product.id}",
-                child: Image.asset(product.image),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: new BorderRadius.circular(10.0),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(product.image),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
