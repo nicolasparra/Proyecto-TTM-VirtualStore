@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:virtualstore/src/pages/perfil.dart';
+import 'package:virtualstore/src/pages/ventas.dart';
 
-class EditPerfil extends StatelessWidget {
-  static String tag = '/editPerfil';
+class NewProduct extends StatelessWidget {
+  static String tag = '/newProduct';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editar perfil'),
+        title: Text('Nuevo producto'),
         backgroundColor: Color.fromRGBO(143, 148, 251, 1),
         elevation: 0,
         leading: Builder(
@@ -15,7 +15,7 @@ class EditPerfil extends StatelessWidget {
             return IconButton(
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, PerfilScreen.tag);
+                Navigator.pushReplacementNamed(context, VentasScreen.tag);
               },
             );
           },
@@ -40,13 +40,13 @@ class EditPerfil extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Image.asset(
-                      'assets/img/perfil.png',
+                      'assets/img/add_photo.png',
                       height: 130,
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    Text("Nombre"),
+                    Text("Nombre producto"),
                     SizedBox(
                       height: 5,
                     ),
@@ -55,7 +55,7 @@ class EditPerfil extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'Nicolas Parra',
+                        hintText: 'Ingrese nombre de producto',
                         contentPadding: const EdgeInsets.all(15),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black)),
@@ -67,7 +67,7 @@ class EditPerfil extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    Text("Email"),
+                    Text("Descripcion"),
                     SizedBox(
                       height: 5,
                     ),
@@ -76,7 +76,7 @@ class EditPerfil extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'nicolas.parra@gmail.com',
+                        hintText: 'Ingrese una pequeña descripcion',
                         contentPadding: const EdgeInsets.all(15),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
@@ -89,7 +89,7 @@ class EditPerfil extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    Text("Telefono"),
+                    Text("Precio"),
                     SizedBox(
                       height: 5,
                     ),
@@ -98,7 +98,7 @@ class EditPerfil extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: '+56911223344',
+                        hintText: 'Ingrese precio del producto',
                         contentPadding: const EdgeInsets.all(15),
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -107,22 +107,6 @@ class EditPerfil extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 20,
-                    ),
-                    Text("Contraseña Actual"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    TextField(
-                      obscureText: true,
-                      style: TextStyle(fontSize: 18, color: Colors.black54),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding: const EdgeInsets.all(15),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
                     ),
                     SizedBox(
                       height: 20,
@@ -131,7 +115,7 @@ class EditPerfil extends StatelessWidget {
                       child: Text("Aceptar"),
                       onPressed: () {
                         Navigator.pushReplacementNamed(
-                            context, PerfilScreen.tag);
+                            context, VentasScreen.tag);
                       },
                     )
                   ],

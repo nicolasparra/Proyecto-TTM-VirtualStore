@@ -8,7 +8,7 @@ class CompraScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('COMPRAS DE PRODUCTOS'),
+        title: Text('Compras realizadas'),
         backgroundColor: Color.fromRGBO(143, 148, 251, 1),
         elevation: 0,
       ),
