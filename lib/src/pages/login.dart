@@ -19,7 +19,7 @@ class LoginPageState extends State<LoginPage> {
     final form = _formKey.currentState;
     if (form.validate()) {
       form.save();
-      if (_mail == 'nico' && _password == '12345') {
+      if (_mail == "nico@algo.cl" && _password == "12345") {
         Navigator.pushReplacementNamed(context, HomePage.tag);
       } else {
         _neverSatisfied();
@@ -229,7 +229,9 @@ class LoginPageState extends State<LoginPage> {
                                   // ),
                                   child: RaisedButton(
                                       onPressed: () {
-                                        _login();
+                                        // _login();
+                                        Navigator.pushReplacementNamed(
+                                            context, HomePage.tag);
                                       },
                                       color: Color.fromRGBO(143, 148, 251, 1),
                                       child: Text('Ingresar',
