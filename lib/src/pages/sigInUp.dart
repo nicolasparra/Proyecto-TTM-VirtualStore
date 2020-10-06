@@ -1,7 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:virtualstore/src/services/auth_service.dart';
+import 'package:virtualstore/src/pages/login.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   static String tag = '/signup';
+
+  @override
+  State<StatefulWidget> createState() => SignupScreenState();
+}
+
+class SignupScreenState extends State<SignupScreen> {
+  final _mail = TextEditingController();
+  final _password = TextEditingController();
+  final _nombre = TextEditingController();
+  final _password2 = TextEditingController();
+
+  @override
+  void dispose() {
+    _mail.dispose();
+    _password.dispose();
+    _password2.dispose();
+    _nombre.dispose();
+    super.dispose();
+  }
+
+  Future<void> _registro() async {
+    if (_password.text != _password2.text) {
+      _neverSatisfied('Contraseñas no coinciden',
+          'Las contraseñas deben coincidir, porfavor intentelo nuevamente');
+    } else {
+      bool registro = await AuthService()
+          .registro(_mail.text, _password.text, _nombre.text);
+
+      if (registro) {
+        Navigator.pushReplacementNamed(context, LoginPage.tag);
+      } else {
+        _neverSatisfied("Error", "Porfavor intentelo de nuevo");
+      }
+    }
+  }
+
+  Future<void> _neverSatisfied(_titulo, _contenido) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(_titulo),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[Text(_contenido)],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Cerrar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +122,7 @@ class SignupScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
+                      controller: _mail,
                     ),
                     SizedBox(
                       height: 20,
@@ -77,6 +143,7 @@ class SignupScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
+                      controller: _nombre,
                     ),
                     SizedBox(
                       height: 20,
@@ -98,6 +165,7 @@ class SignupScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
+                      controller: _password,
                     ),
                     SizedBox(
                       height: 20,
@@ -119,6 +187,7 @@ class SignupScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
+                      controller: _password2,
                     ),
                     SizedBox(
                       height: 20,
@@ -136,7 +205,9 @@ class SignupScreen extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.all(15),
                       textColor: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        _registro();
+                      },
                     ),
                   ],
                 ),

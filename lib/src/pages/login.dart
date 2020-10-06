@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:virtualstore/src/pages/home.dart';
 import 'package:virtualstore/src/pages/sigInUp.dart';
 import 'package:virtualstore/src/Animation/FadeAnimation.dart';
+import 'package:virtualstore/src/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = '/login';
@@ -19,7 +20,8 @@ class LoginPageState extends State<LoginPage> {
     final form = _formKey.currentState;
     if (form.validate()) {
       form.save();
-      if (_mail == "nico@algo.cl" && _password == "12345") {
+      bool login = await AuthService().login(_mail, _password);
+      if (login) {
         Navigator.pushReplacementNamed(context, HomePage.tag);
       } else {
         _neverSatisfied();
@@ -229,9 +231,9 @@ class LoginPageState extends State<LoginPage> {
                                   // ),
                                   child: RaisedButton(
                                       onPressed: () {
-                                        // _login();
-                                        Navigator.pushReplacementNamed(
-                                            context, HomePage.tag);
+                                        _login();
+                                        // Navigator.pushReplacementNamed(
+                                        //     context, HomePage.tag);
                                       },
                                       color: Color.fromRGBO(143, 148, 251, 1),
                                       child: Text('Ingresar',

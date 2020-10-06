@@ -5,6 +5,7 @@ import 'package:virtualstore/src/pages/login.dart';
 import 'package:virtualstore/src/pages/compras.dart';
 import 'package:virtualstore/src/pages/ventas.dart';
 import 'package:virtualstore/src/pages/perfil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerPage extends StatelessWidget {
   @override
@@ -45,10 +46,23 @@ class DrawerPage extends StatelessWidget {
           ListTile(
             title: Text('Salir'),
             leading: Icon(Icons.exit_to_app),
-            onTap: () => Navigator.pushReplacementNamed(context, LoginPage.tag),
+            // onTap: () => Navigator.pushReplacementNamed(context, LoginPage.tag),
+            onTap: () => logOut(context),
           ),
         ],
       ),
     );
+  }
+
+  imprimirtoken(context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.getString('token'));
+    Navigator.pushReplacementNamed(context, LoginPage.tag);
+  }
+
+  logOut(context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('token');
+    Navigator.pushReplacementNamed(context, LoginPage.tag);
   }
 }
